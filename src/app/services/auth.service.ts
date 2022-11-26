@@ -36,15 +36,15 @@ export class AuthService {
   }
 
   public async loadUser() {
-    this.userClaims = await this.http.get<UserClaims>(`${this.baseUrl}/usuarios/data`).toPromise();
-    console.log("miembroId: ", this.userClaims.miembroId);
+    // this.userClaims = await this.http.get<UserClaims>(`${this.baseUrl}/usuarios/data`).toPromise();
+    // console.log("miembroId: ", this.userClaims.miembroId);
 
-    if (this.userClaims.miembroId) {
-      this.initService.getMiembroData();
-    }
-    this.observableUserClaims.next();
-    this.systemEnumsProperty = await this.http.get<SystemEnums>(`${this.baseUrl}/metadata-enums`).toPromise();
-    console.log(this.systemEnumsProperty);
+    // if (this.userClaims.miembroId) {
+    //   this.initService.getMiembroData();
+    // }
+    // this.observableUserClaims.next();
+    // this.systemEnumsProperty = await this.http.get<SystemEnums>(`${this.baseUrl}/metadata-enums`).toPromise();
+    // console.log(this.systemEnumsProperty);
   }
 
   async login(loginUsuario: LoginUsuario) {
