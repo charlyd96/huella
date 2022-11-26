@@ -104,4 +104,8 @@ export class AuthService {
 
     return this.estaLogeado() && this.userClaims.usuarioId != null && this.userClaims.rol == null;
   }
+
+  probar() {
+    return this.http.get('https://huella.azurewebsites.net/apiv2/factor-emision').toPromise()
+  }
 }

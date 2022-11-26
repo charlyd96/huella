@@ -13,4 +13,9 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
   }
 
+  async probar() {
+    console.log("Probando:", await this.authService.probar());
+
+  }
+
 }
