@@ -20,8 +20,8 @@ export class InitService {
 
   public async init() {
     return new Promise<Boolean>(async (resolve) => {
-      this.userClaims = await this.http.get<UserClaims>(`${this.baseUrl}/usuarios/data`).toPromise();
-      this.systemEnumsProperty = await this.http.get<SystemEnums>(`${this.baseUrl}/metadata-enums`).toPromise();
+      //this.userClaims = await this.http.get<UserClaims>(`${this.baseUrl}/usuarios/data`).toPromise();
+     // this.systemEnumsProperty = await this.http.get<SystemEnums>(`${this.baseUrl}/metadata-enums`).toPromise();
       if (this.userClaims.miembroId)
         await this.getMiembroData()
 
