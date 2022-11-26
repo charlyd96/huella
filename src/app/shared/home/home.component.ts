@@ -9,23 +9,8 @@ import { LocalizacionService } from '../../services/localizacion-service.service
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService, private localizacionService: LocalizacionService) { }
+  constructor(private authService: AuthService) { }
 
   async ngOnInit() {
   }
-
-  async probarGet() {
-    console.log("Probando get:", await this.authService.probarGet());
-  }
-
-  async probarPost() {
-    console.log("Probando post:", await this.authService.probarPost());
-
-  }
-
-  async probarApiLocalizacion() {
-    console.log("Probando api localizacion:", await this.localizacionService.getLocalidades(2));
-
-  }
-
 }

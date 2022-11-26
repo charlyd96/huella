@@ -104,13 +104,5 @@ export class AuthService {
 
     return this.estaLogeado() && this.userClaims.usuarioId != null && this.userClaims.rol == null;
   }
-
-  probarGet() {
-    return this.http.get(`${this.baseUrl}/factor-emision`).toPromise()
-  }
-
-  probarPost() {
-    return this.http.post(`${this.baseUrl}/usuarios/login`, {usuario: 'bart', contrasenia: '1234'}).toPromise()
-  }
 }
 
