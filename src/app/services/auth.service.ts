@@ -106,11 +106,11 @@ export class AuthService {
   }
 
   probarGet() {
-    return this.http.get('/apiv2/factor-emision').toPromise()
+    return this.http.get(`${this.baseUrl}/factor-emision`).toPromise()
   }
 
   probarPost() {
-    return this.http.post('/apiv2/usuarios/login', {usuario: 'bart', contrasenia: '1234'}).toPromise()
+    return this.http.post(`${this.baseUrl}/usuarios/login`, {usuario: 'bart', contrasenia: '1234'}).toPromise()
   }
 }
 
