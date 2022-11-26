@@ -13,8 +13,12 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
   }
 
-  async probar() {
-    console.log("Probando:", await this.authService.probar());
+  async probarGet() {
+    console.log("Probando get:", await this.authService.probarGet());
+  }
+
+  async probarPost() {
+    console.log("Probando post:", await this.authService.probarPost());
 
   }
 

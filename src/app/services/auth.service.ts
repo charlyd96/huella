@@ -105,7 +105,12 @@ export class AuthService {
     return this.estaLogeado() && this.userClaims.usuarioId != null && this.userClaims.rol == null;
   }
 
-  probar() {
+  probarGet() {
     return this.http.get('https://huella.azurewebsites.net/apiv2/factor-emision').toPromise()
   }
+
+  probarPost() {
+    return this.http.post('https://huella.azurewebsites.net/apiv2/usuarios/login', {usuario: 'bart', contrasenia: '1234'}).toPromise()
+  }
 }
+
