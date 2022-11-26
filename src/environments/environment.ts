@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: '/apiv1'
+  baseUrl: '/apiv2'
 };
 
 /*

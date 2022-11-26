@@ -110,7 +110,7 @@ export class AuthService {
   }
 
   probarPost() {
-    return this.http.post('https://huella.azurewebsites.net/apiv2/usuarios/login', {usuario: 'bart', contrasenia: '1234'}).toPromise()
+    return this.http.post('/apiv2/usuarios/login', {usuario: 'bart', contrasenia: '1234'}).toPromise()
   }
 }
 
