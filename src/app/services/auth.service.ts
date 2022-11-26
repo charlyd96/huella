@@ -106,7 +106,7 @@ export class AuthService {
   }
 
   probarGet() {
-    return this.http.get('https://huella.azurewebsites.net/apiv2/factor-emision').toPromise()
+    return this.http.get('/apiv2/factor-emision').toPromise()
   }
 
   probarPost() {
