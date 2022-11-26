@@ -1,0 +1,96 @@
+<h1 class="mt-4"> Configurar factores de emisión </h1>
+<div class="container border-primary shadow p-3 mb-5 mt-5 bg-light rounded">
+<div class="container">
+  <h3>Ver factores de emisión</h3>
+  <table class="table table-bordered mt-4">
+
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Valor</th>
+        <th>Tipo Factor Emisión</th>
+        <th>Combustible</th>
+        <th>Transporte Publico</th>
+        <th>Vehículo</th>
+        <th>Actividad</th>
+      </tr>
+    </thead>
+
+    <tbody class="table-group-divider">
+       <tr *ngFor="let factorEmision of factoresEmision">
+        <td > {{factorEmision.nombre}} </td>
+        <td > {{factorEmision.valor}} </td>
+        <td > {{factorEmision.tipoFactorEmision | getEnumName: tiposFactoresEmision }} </td>
+        <td > {{factorEmision.combustible?.nombre || '-'}} </td>
+        <td > {{factorEmision.tipoTransportePublico | getEnumName: tiposTransportesPublicos || '-'}} </td>
+        <td > {{factorEmision.tipoVehiculo  || '-' }} </td>
+        <td > {{factorEmision.tipoActividad | getEnumName: tiposActividad || '-'}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<hr class="hr-bold">
+
+<div class="container border-primary shadow p-3 mb-5 bg-light rounded">
+<h3> Crear factores de emisión </h3>
+<div class="row">
+  <div class="col-6">
+
+    <form [formGroup]="formulario" (ngSubmit)="crear()" >
+      <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <label class="mr-sm-2" for="inlineFormCustomSelect">Tipo de Factor de Emisión</label>
+          <br>
+          <select class="form-select mr-sm-2"
+              id="inlineFormCustomSelect"
+              (change)="actualizarTipo()"
+              formControlName="tipoFactorEmision">
+              <option [value]= "factorEmision.value" *ngFor="let factorEmision of tiposFactoresEmision"> {{factorEmision.displayName}} </option>
+          </select>
+        </div>
+
+          <div class="form-group mt-2">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder=""
+              formControlName="nombre">
+          </div>
+
+          <div class="form-group mt-2">
+            <label for="exampleInputPassword1">Valor</label>
+            <input
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder=""
+              formControlName="valor">
+          </div>
+
+          <div class="col-auto my-1 mt-4">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">{{ getTitulo }}</label>
+            <br>
+            <select class="form-select mr-sm-2" id="inlineFormCustomSelect" formControlName="tipoOpcion" >
+              <option [value]="opcion.value" *ngFor="let opcion of opciones"> {{opcion.displayName}}</option>
+            </select>
+          </div>
+
+          <div *ngIf="!(tipoActividadSeleecionado == 0 && formulario.controls.tipoOpcion.value == 3)" class="col-auto my-1 mt-4">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Combustible</label>
+            <br>
+            <select class="form-select mr-sm-2" id="inlineFormCustomSelect" formControlName="combustible">
+              <option [value]="combustible.id" *ngFor="let combustible of combustibles"> {{combustible.nombre}} </option>
+            </select>
+          </div>
+
+
+        <div class="col-auto my-1 mt-4">
+          <button [disabled]="loading" type="submit" class="col-md-4 btn btn-primary  btn-lg">Confirmar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>

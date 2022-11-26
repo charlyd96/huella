@@ -1,0 +1,27 @@
+<!-- <div class="container border border-primary margen-sup p-3 mb-5" > -->
+<div class="container border-primary shadow p-3 mb-5 bg-light rounded">
+
+<h1 class="ml-4 mt-4">Iniciar Sesion</h1>
+  <section>
+    <hr class="hr-bold">
+    <form class="ml-6"  [formGroup]="formIniciarSesion" (ngSubmit)="iniciarSesion()">
+    <hr class="hr-bold">
+      <div class="form-group col-md-2">
+        <label for="usuario">Usuario</label>
+        <input formControlName="usuario" type="text" class="form-control" id="usuario" name="usuario" placeholder="Ej: lulu123" >
+      </div>
+      <div class="form-group col-md-2">
+        <label for="contrasenia">Contraseña</label>
+        <input formControlName="contrasenia" type="password" class="form-control" id="contrasenia" name="contrasenia">
+      </div>
+
+
+    <!-- <button [disabled]="loading" class="btn btn-secondary m-4" >Iniciar Sesion</button> -->
+    <button [disabled]="loading" class="col-md-2 btn btn-primary btn-lg m-4" >Iniciar Sesion</button>
+
+    <div>
+      <p>  Si aún no estas registrado, <a routerLink= "/register"> hace click aquí </a> para registrate. </p>
+    </div>
+    </form>
+  </section>
+</div>

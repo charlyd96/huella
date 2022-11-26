@@ -1,0 +1,32 @@
+<div class="row setup-content shadow p-3 mb-5 bg-light rounded" id="step-2" >
+  <div class="container border border-primary margen-sup p-3">
+    <h3> Trayecto </h3>
+    <div class="col-md-6">
+      <label class="form-label"><strong>Nombre del Trayecto:</strong> {{trayecto?.nombre}}</label>
+    </div>
+
+    <app-mostrar-direccion [direccion]="trayecto.direccionInicio" titulo='Dirección Inicial'> </app-mostrar-direccion>
+    <app-mostrar-direccion [direccion]="trayecto.direccionFin" titulo='Dirección Final'> </app-mostrar-direccion>
+
+    <table class="table table-bordered mt-4">
+      <thead class="table-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Medio de Transporte</th>
+        </tr>
+      </thead>
+
+      <tbody class="table-group-divider">
+        <tr *ngFor="let tramo of trayecto.tramo; let tramoIndex=index">
+          <td > {{tramo.nombre}} </td>
+          <td > {{tramo.getInicio()}} </td>
+          <td > {{tramo.getFin()}} </td>
+          <td > {{tramo.getMedioDeTransporte(systemEnums)}} </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

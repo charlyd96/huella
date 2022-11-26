@@ -1,0 +1,50 @@
+<form [formGroup]="formDireccion">
+  <h5 class="margen-sup"> {{ titulo }}</h5>
+  <div class="row">
+    <div class="col form-group">
+      <label class="control-label">Calle</label>
+      <input formControlName="calle" maxlength="100" type="text" required="required" class="form-control"  placeholder="Ingrese la calle">
+      <app-campo-requerido *ngIf="campoInvalido('calle')"></app-campo-requerido>
+    </div>
+    <div class="col form-group">
+      <label class="control-label">Numero</label>
+      <input formControlName="numero" maxlength="20" type="text" required="required" class="form-control" placeholder="Ingrese el numero">
+      <app-campo-requerido *ngIf="campoInvalido('numero')"></app-campo-requerido>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col form-group">
+      <label id="IdCodPostalIni" class="control-label">Codigo Postal</label>
+      <input formControlName="codigoPostal" maxlength="20" type="text" required="required" class="form-control" placeholder="Ingrese el Codigo Postal">
+      <app-campo-requerido *ngIf="campoInvalido('codigoPostal')"></app-campo-requerido>
+    </div>
+    <div class="col form-group">
+      <label for="inputProvinciaIni" class="control-label">Provincia</label>
+      <select formControlName="provincia" id="inputProvinciaIni" class="form-select" (change)="setMunicipio()">
+        <option  selected disabled>Seleccione...</option>
+        <option [ngValue]="provincia" *ngFor="let provincia of provincias() ">{{provincia.nombre}}</option>
+      </select>
+      <app-campo-requerido *ngIf="campoInvalido('provincia')"></app-campo-requerido>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col form-group">
+      <label for="inputMunicipioIni" class="control-label">Municipio</label>
+      <select formControlName="municipio" id="inputMunicipioIni" class="form-select" (change)="setLocalidad()">
+        <option selected disabled>Seleccione...</option>
+        <option [ngValue]="municipio" *ngFor="let municipio of municipios">{{municipio.nombre}}</option>
+      </select>
+      <app-campo-requerido *ngIf="campoInvalido('municipio')"></app-campo-requerido>
+    </div>
+    <div class="col form-group">
+      <label for="inputLocalidadIni" class="control-label">Localidad</label>
+      <select formControlName="localidad" id="inputLocalidadIni" class="form-select">
+        <option selected disabled>Seleccione...</option>
+        <option [ngValue]="localidad" *ngFor="let localidad of localidades">{{localidad.nombre}}</option>
+      </select>
+      <app-campo-requerido *ngIf="campoInvalido('localidad')"></app-campo-requerido>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,120 @@
+{
+    "nombre": "De Medrano a Campus en colectivo y subte",
+    "inicio": {
+        "calle": "Medrano 951",
+        "numero": "123",
+        "idLocalidad:": 43,
+        "municipio": {
+            "idMunicipio": 9
+        },
+        "provincia": {
+            "idProvincia": 9
+        }
+    },
+    "fin": {
+        "calle": "Mozart",
+        "numero": "2300",
+        "idLocalidad:": 43,
+        "municipio": {
+            "idMunicipio": 9
+        },
+        "provincia": {
+            "idProvincia": 9
+        }
+    },
+    "tramo": [
+        {
+            "nombre": "Tramo 1 - De Lugano a Mataderos con el 47",
+            "inicio": {
+                "calle": "Mozart",
+                "numero": "2300",
+                "idLocalidad:": 43,
+                "municipio": {
+                    "idMunicipio": 9
+                },
+                "provincia": {
+                    "idProvincia": 9
+                }
+            },
+            "fin": {
+                "calle": "Miralla",
+                "numero": "1100",
+                "idLocalidad:": 43,
+                "municipio": {
+                    "idMunicipio": 9
+                },
+                "provincia": {
+                    "idProvincia": 9
+                },
+                "esCompartido": false,
+                "trayecto": null,
+                "medioDeTransporte": {
+                    "observacion": "Esta parte es complicada, hay que crear un patrón factory method que intancie al medio de transporte adecuado según su tipo"
+                }
+            },
+            "esCompartido": false
+        },
+        {
+            "nombre": "Tramo 2 - De Mataderos a Flores con el 55",
+            "inicio": {
+                "calle": "Miralla",
+                "numero": "1100",
+                "idLocalidad:": 43,
+                "municipio": {
+                    "idMunicipio": 9
+                },
+                "provincia": {
+                    "idProvincia": 9
+                }
+            },
+            "fin": {
+                "calle": "San Pedrito",
+                "numero": "10",
+                "idLocalidad:": 43,
+                "municipio": {
+                    "idMunicipio": 9
+                },
+                "provincia": {
+                    "idProvincia": 9
+                },
+                "esCompartido": false,
+                "trayecto": null,
+                "medioDeTransporte": {
+                    "observacion": "Esta parte es complicada, hay que crear un patrón factory method que intancie al medio de transporte adecuado según su tipo"
+                }
+            },
+            "esCompartido": false
+        },
+        {
+            "nombre": "Tramo 3 - De Flores a Almagro con la línea A y B (omitimos la combinación)",
+            "inicio": {
+                "calle": "San Pedrito",
+                "numero": "5",
+                "idLocalidad:": 43,
+                "municipio": {
+                    "idMunicipio": 9
+                },
+                "provincia": {
+                    "idProvincia": 9
+                }
+            },
+            "fin": {
+                "calle": "Medrano",
+                "numero": "951",
+                "idLocalidad:": 43,
+                "municipio": {
+                    "idMunicipio": 9
+                },
+                "provincia": {
+                    "idProvincia": 9
+                },
+                "esCompartido": false,
+                "trayecto": null,
+                "medioDeTransporte": {
+                    "observacion": "Esta parte es complicada, hay que crear un patrón factory method que intancie al medio de transporte adecuado según su tipo"
+                }
+            },
+            "esCompartido": false
+        }
+    ]
+}

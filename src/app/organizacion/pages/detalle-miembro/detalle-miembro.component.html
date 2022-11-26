@@ -1,0 +1,97 @@
+<div class="container p-5 mb-4">
+
+ <section>
+
+    <div class="row setup-content shadow p-3 mb-5 bg-light rounded">
+      
+      <img class="avatar-photo" src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Eiche_bei_Graditz.jpg/1200px-Eiche_bei_Graditz.jpg' alt='image'>
+      
+
+      
+    
+<section tabindex="-1" class="pv-profile-section pv-contact-info artdeco-container-card">
+  
+
+<h1 class="text-body-large-open mb4">
+ {{miembro.persona.nombre}} {{miembro.persona.apellido}} 
+</h1>
+
+    <div tabindex="-1">
+
+<!---->
+<h3 class="pv-contact-info__header t-16 t-black t-bold">
+  Mail
+</h3>
+  <section class="pv-contact-info__contact-type">
+    <ul class="list-style-none">
+        <li class="pv-contact-info__ci-container">
+          <span class="t-14 t-black t-normal">
+            {{miembro.persona.mail}}
+          </span>
+        </li>
+    </ul>
+  </section>
+<!---->
+  <section class="pv-contact-info__contact-type">
+    <h3 class="pv-contact-info__header">
+      {{miembro.persona.tipoDoc.name}}
+    </h3>
+    <div class="pv-contact-info__ci-container">
+      <ul>
+      <li>
+        <span class="pv-contact-info__contact-item">
+         {{miembro.persona.nroDocumento}}
+        </span>
+       </li>
+     </ul>
+    </div>
+  </section> <section class="pv-contact-info__contact-type">
+    <h3 class="pv-contact-info__header">
+      Huella de carbono total
+    </h3>
+    <div class="pv-contact-info__ci-container">
+      <ul>
+      <li>
+        <span class="pv-contact-info__contact-item">
+         {{miembro.huella}}
+        </span>
+       </li>
+     </ul>
+    </div>
+  </section>
+<!--...
+  <section class="pv-contact-info__contact-type">
+    <h3 class="pv-contact-info__header">
+      Porcentaje de contaminacion  en la Organizacion
+    </h3>
+    <div class="pv-contact-info__ci-container">
+      <ul>
+      <li>
+        <span class="pv-contact-info__contact-item">
+         {{ miembro.huella / miembro.organizacion.huella}}
+        </span>
+       </li>
+     </ul>
+    </div>
+  </section>! 
+  ...--> 
+  
+</div>
+
+  <!---->
+</section>
+
+
+      <div class="col-md-6 ">
+        <label class="form-label"></label>
+      </div>
+    
+    </div>
+
+    <div *ngIf="!miembro?.aprobado">
+      <button  class="col-md-2 btn btn-primary btn-lg btn btn-success" (click)='aprobar()' >Aceptar</button>
+      <button  class="col-md-2 btn btn-primary btn-lg btn btn-danger" (click)='rechazar()'>Rechazar</button>
+    </div>  
+  
+  </section>
+</div>

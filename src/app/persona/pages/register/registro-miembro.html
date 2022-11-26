@@ -1,0 +1,61 @@
+<div class="container border-primary shadow p-3 mb-5 bg-light rounded">
+  <h1 class="ml-4 mt-4">Adherite como miembro a una organización</h1>
+
+  <section>
+  <hr class="hr-bold">
+  <form class="ml-6"  [formGroup]="formularioRegPersonas" (ngSubmit)="agregarPersona()">
+    <div class="form-row mt-4" >
+      <div class="form-group col-md-4">
+        <label for="Nombre">Nombre</label>
+        <input formControlName="nombre" type="text"
+               class="form-control" id="nombre" name="nombre" placeholder="Juan Fernando">
+
+        <label for="Apellido">Apellido</label>
+        <input formControlName="apellido" type="text"
+               class="form-control" id="apellido" name="apellido" placeholder="Quinteros">
+      </div>
+    </div>
+
+    <div class="form-row mt-4" >
+      <div class="form-group col-md-4">
+       <label class="form-label">Tipo de Documento</label>
+        <select formControlName="tipoDoc" class="form-select">
+          <option selected disabled>Seleccione...</option>
+          <option [value]="tipoDoc.value" *ngFor="let tipoDoc of tiposDocumentos">{{tipoDoc.displayName}}</option>
+        </select>
+        <label for="nroDocumento">Documento</label>
+        <input formControlName="nroDocumento" type="text"
+               class="form-control" id="nroDocumento" name="nroDocumento" placeholder="123456">
+      </div>
+    </div>
+
+    <div class="form-row mt-4" >
+      <div class="form-group col-md-4">
+        <label for="mail">Mail</label>
+        <input formControlName="mail" type="email"
+               class="form-control" id="mail" name="mail" placeholder="ejemplo@ejemplo.com">
+      </div>
+    </div>
+
+    <div class="form-row mt-4" >
+      <div class="form-group col-md-4">
+        <label >¿A qué organización querés adherirte?</label>
+        <select formControlName="organizacion" class="form-select" (click)="setOrganizacion()">
+          <option [ngValue]="organizacion" *ngFor="let organizacion of organizaciones">{{organizacion.nombre}} </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row mt-4" >
+      <div class="form-group col-md-4">
+        <label >Elegí el sector de la organización</label>
+        <select formControlName="sector" class="form-select">
+          <option [ngValue]="sector" *ngFor="let sector of organizacionSeleccionada?.sectores">{{sector.nombre}} </option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="col-md-2 btn btn-primary btn-lg m-4">Registrate</button>
+
+  </form>
+  </section>
+</div>
+

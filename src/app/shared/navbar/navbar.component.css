@@ -1,0 +1,22 @@
+.vertical-nav {
+    min-width: 14rem;
+    width: 14rem;
+    height: 100vh;
+    position: fixed;
+    /* top: 0; */
+    /* left: 0; */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+}
+
+.breadcrumb-style {
+    margin-left: 15rem;
+    /* --bs-breadcrumb-divider: url(
+        &#34;data:image/svg+xml,
+        %3Csvg xmlns='http://www.w3.org/2000/svg' 
+        width='8' 
+        height='8'%3E%3C
+        path d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' 
+        fill='%236c757d'/%3E%3C/svg%3E&#34;
+    ) */
+}

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+.btn{
+  border-radius: 50px;
+}
+
+body{
+  background-color: rgb(251, 246, 246);
+}
+
+.hide {
+  display: none;
+}
+
+.hr-bold{
+  border-top: 3px solid rgb(20, 19, 19);
+}

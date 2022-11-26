@@ -1,0 +1,97 @@
+
+<style>
+.save-button {
+top: 0;
+right: 0;
+height: 34px;
+width: 80px;
+font-size: 14px;
+color: white;
+text-align: center;
+line-height: 4px;
+border-width: 0;
+background-color: black;
+cursor: pointer;
+}
+</style>
+
+<form [formGroup]="formulario" class="row g-3">
+  <div class="row setup-content p-3 mb-5 bg-light rounded" >
+    <!-- <div class="container border border-primary margen-sup p-3"> -->
+    <div class="container border-primary shadow p-3 mb-5 bg-light rounded">
+      <h3> Alta de organización </h3>
+    <div class="row">
+      <div class="col col-md-4">
+        <label for="Nombre">Nombre de la Organizacion</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" formControlName = "nombre">
+      </div>
+      <div class="col col-md-4">
+        <label for="razonSocial">Razon Social</label>
+        <input type="text" class="form-control" id="razonSocial" name="razonSocial" placeholder="" formControlName = "razonSocial">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col col-md-4">
+        <label>Tipo de Organización</label>
+        <br>
+        <select id="tipoOrganizacion" formControlName = "tipoOrganizacion" class="form-select">
+          <option [value]="tipoOrg.value" *ngFor="let tipoOrg of tiposOrganizaciones">{{tipoOrg.displayName}}</option>
+        </select>
+      </div>
+      <div class="col col-md-4">
+        <label for="numeroDeTelefono">Número de teléfono</label>
+        <input type="text" class="form-control" id="numeroDeTelefono" name="numeroDeTelefono" placeholder="" formControlName = "numeroDeTelefono">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col col-md-4">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="" formControlName = "email">
+      </div>
+      <div class="col col-md-4">
+        <label>Clasificación</label>
+        <br>
+        <select id="clasificacion" formControlName = "clasificacion" class="form-select">
+          <option [value]="clasificacion.id" *ngFor="let clasificacion of clasificaciones">{{clasificacion.clasificacion}}</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-8">
+        <hr>
+        <app-direccion #direccion titulo='Dirección' class="col-8  mt-4"> </app-direccion>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-4">
+        <hr>
+        <h5>Sectores</h5>
+        <div class="input-group mb-2">
+          <input class="form-control" placeholder="Agregar sector" [formControl]="nuevoSector" (keyup.enter)="agregarSector()">
+          <button class="btn btn-outline-primary" type="button" (click)="agregarSector()"> Agregar </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4" formArrayName="sectores">
+          <div class="input-group mb-2" *ngFor="let item of sectoresArray.controls; let i = index">
+            <input class="form-control"
+                  [formControlName]="i">
+
+            <button class="btn btn-outline-danger"
+                    type="button"
+                    (click)="borrar(i)">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button class="col-md-1 btn btn-primary  btn-lg float-start "  (click)="crear()"><span>Guardar</span></button>
+    </div>
+  </div>
+</form>

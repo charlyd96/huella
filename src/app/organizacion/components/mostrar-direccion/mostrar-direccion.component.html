@@ -1,0 +1,29 @@
+<div class="row setup-content shadow p-3 mb-5 bg-light rounded" id="step-2">
+    <div class="container border border-primary margen-sup p-3">
+      <!-- trayecto Inicial -->
+      <h5 class="margen-sup">{{ titulo }}</h5>
+      <div class="row">
+        <div class="col form-group">
+          <label class="control-label"><strong>Calle:</strong> {{ direccion?.calle }}</label>
+        </div>
+        <div class="col form-group">
+          <label class="control-label"><strong>Numero:</strong> {{ direccion?.numero }}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form-group">
+          <label id="IdCodPostalIni" class="control-label"><strong>Codigo Postal:</strong> {{ direccion?.codigoPostal }}</label>
+        </div>
+        <div class="col form-group">
+          <label for="inputLocalidadIni" class="control-label"><strong>Localidad:</strong> {{ direccion?.localidad?.nombre }}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form-group">
+          <label for="inputMunicipioIni" class="control-label"><strong>Municipio:</strong> {{ direccion?.municipio?.nombre }}</label>
+        </div>
+        <div class="col form-group">
+          <label for="inputProvinciaIni" class="control-label"><strong>Provincia:</strong> {{ direccion?.provincia?.nombre }}</label>
+        </div>
+      </div>
+    </div>

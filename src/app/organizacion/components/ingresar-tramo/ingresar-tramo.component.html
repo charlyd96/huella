@@ -1,0 +1,127 @@
+<!-- <div class="container border border-primary margen-sup p-3 mb-5 shadow bg-light rounded"> -->
+<div class="container border-primary shadow p-3 mb-5 bg-light rounded">
+  <form [formGroup]="formularioTramos">
+    <h3 class="margen-sup"> Tramo </h3>
+    <div class="row">
+      <div class="col form-group mb-4">
+        <label class="form-label">Nombre del Tramo</label>
+        <input formControlName="nombre" type="text" class="form-control" id="nombreTramo">
+      </div>
+      <div class="col form-group">
+        <label for="inputState" class="form-label">Medio de transporte</label>
+        <select formControlName="tipoTransporte" id="inputMedioTransp" class="form-select" (change)="setMedioTransporte()">
+          <option selected disabled>Seleccione...</option>
+          <option [ngValue]="tipoTransporte" *ngFor="let tipoTransporte of tiposTransporte">{{tipoTransporte.displayName}}</option>
+        </select>
+      </div>
+
+      <ng-container *ngIf="tipoTransporteSeleccionado == tiposTansporteEnum.MEDIOS_PROPIOS">
+        <div class="col form-group mb-4" formGroupName="mediosPropios">
+          <label class="form-label">Detalle</label>
+          <input formControlName="detalle" type="text" class="form-control" id="nombreTramo">
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="tipoTransporteSeleccionado == tiposTansporteEnum.SERVICIO_CONTRATADO">
+        <div class="col form-group" formGroupName="servicioContratado">
+          <label for="inputState" class="form-label">Tipo Servicio Contratado</label>
+          <select formControlName="tipoServicioContratado" id="inputMedioTransp" class="form-select" (change)="setServicioContratado()">
+            <option selected disabled>Seleccione...</option>
+            <option [ngValue]="tipo" *ngFor="let tipo of tiposServicioContratado">{{tipo.nombre + ' - ' + tipo.combustible.nombre}}</option>
+          </select>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="tipoTransporteSeleccionado == tiposTansporteEnum.VEHICULO_PARTICULAR">
+        <div class="row" formGroupName="vehiculoParticular">
+          <div class="col form-group">
+            <label for="inputState" class="form-label">Tipo vehículo</label>
+            <select formControlName="tipoVehiculo" id="inputMedioTransp" class="form-select" >
+              <option selected disabled>Seleccione...</option>
+              <option [ngValue]="tipoVehiculo.value" *ngFor="let tipoVehiculo of tiposVehiculosParticulares">{{tipoVehiculo.displayName}}</option>
+            </select>
+          </div>
+          <div class="col form-group">
+            <label for="inputState" class="form-label">Combustible</label>
+            <select formControlName="combustible" id="inputMedioTransp" class="form-select">
+              <option selected disabled>Seleccione...</option>
+              <option [ngValue]="combustible" *ngFor="let combustible of combustibles">{{combustible.nombre}}</option>
+            </select>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="tipoTransporteSeleccionado == tiposTansporteEnum.TRANSPORTE_PUBLICO">
+        <div *ngIf="!mostrarDirecciones"  class="col form-group">
+          <label for="inputState" class="form-label">Tipo</label>
+          <select formControlName="tipoTransportePublico" id="inputMedioTransp" class="form-select" (change)="setTipoTransportePublico()" >
+            <option selected disabled>Seleccione...</option>
+            <option [ngValue]="tipo.value" *ngFor="let tipo of tiposTransportesPublicos">{{tipo.displayName}}</option>
+          </select>
+        </div>
+
+        <div class="row" *ngIf="tipoTransporteSeleccionado == tiposTansporteEnum.TRANSPORTE_PUBLICO" formGroupName="transportePublico">
+          <div   class="col form-group">
+            <label for="inputState" class="form-label">Línea</label>
+            <select formControlName="linea" id="inputMedioTransp" class="form-select" (change)="setLinea()">
+              <option selected disabled>Seleccione...</option>
+              <option [ngValue]="linea" *ngFor="let linea of lineasFiltradas">{{linea.nombre}}</option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label for="inputState" class="form-label">Parada Inicio </label>
+            <select formControlName="paradaInicio" id="inputMedioTransp" class="form-select" >
+              <option selected disabled>Seleccione...</option>
+              <option [ngValue]="parada" *ngFor="let parada of paradas">{{parada.nombre}}</option>
+            </select>
+          </div>
+
+          <div class="col form-group">
+            <label for="inputState" class="form-label">Parada Fin</label>
+            <select formControlName="paradaFin" id="inputMedioTransp" class="form-select" >
+              <option selected disabled>Seleccione...</option>
+              <option [ngValue]="parada" *ngFor="let parada of paradas">{{parada.nombre}}</option>
+            </select>
+          </div>
+        </div>
+      </ng-container>
+
+
+    <ng-container *ngIf="tipoTransporteSeleccionado != tiposTansporteEnum.TRANSPORTE_PUBLICO">
+      <app-direccion class="mt-4"  titulo="Dirección Inicial" #direccionInicial> </app-direccion>
+      <app-direccion class="mt-4" titulo="Dirección Final" #direccionFinal> </app-direccion>
+    </ng-container>
+
+    </div>
+    <div class="row">
+      <div class="d-grid gap-2 col-4 mx-auto margen-sup mt-4">
+        <button class="btn btn-primary" type="button" (click)="agregarTramo()">Agregar Tramo</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container border-primary shadow p-3 mb-5 bg-light rounded">
+<table class="table table-bordered mt-4">
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Origen</th>
+      <th>Destino</th>
+      <th>Medio de Transporte</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody class="table-group-divider">
+    <tr *ngFor="let tramo of tramos; let tramoIndex=index">
+      <td > {{tramo.nombre}} </td>
+      <td > {{tramo.getInicio()}} </td>
+      <td > {{tramo.getFin()}} </td>
+      <td > {{tramo.getMedioDeTransporte(systemEnums)}} </td>
+      <td class="text-center" style="cursor:pointer" (click)="eliminarTramo(tramoIndex)"><i title="Eliminar" class="fas fa-trash-alt"></i></td>
+    </tr>
+  </tbody>
+</table>
+</div>

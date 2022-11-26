@@ -1,0 +1,11 @@
+<form class="row g-3" [formGroup]="formTrayecto" >
+  <div class="row setup-content shadow p-3 mb-5 bg-light rounded">
+    <h3> Trayecto </h3>
+    <div class="col-md-6 ">
+      <label class="form-label">Nombre del Trayecto</label>
+      <input formControlName="nombre" type="text-uppercase" class="form-control" id="nombreTrayecto">
+    </div>
+    <app-direccion #direccionInicial titulo='Dirección Inicial' class="mt-4"> </app-direccion>
+    <app-direccion #direccionFinal titulo='Dirección Final' class="mt-4"> </app-direccion>
+  </div>
+</form>
