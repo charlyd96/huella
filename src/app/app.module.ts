@@ -7,10 +7,11 @@ import { OrganizacionModule } from './organizacion/organizacion.module';
 import { AdministradorModule } from './administrador/administrador.module';
 import { AuthModule } from './auth/auth.module';
 import { CalculadoraModule } from './calculadora/calculadora.module';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PersonaModule } from './persona/persona.module';
 import { RecomendacionModule } from './recomendacion/recomendacion.module';
 import { InitService } from './services/init.service';
+import { AuthInterceptor } from './shared/interceptors/authInterceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,11 @@ import { InitService } from './services/init.service';
     SharedModule,
     HttpClientModule,
   ],
-  providers: [  InitService, {provide : APP_INITIALIZER, useFactory : init, deps: [InitService, HttpClient] , multi : true}
+  providers: [
+    InitService,
+    {provide : APP_INITIALIZER, useFactory : init, deps: [InitService, HttpClient] , multi : true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+
 ],
   bootstrap: [AppComponent]
 })

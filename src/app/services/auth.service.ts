@@ -10,7 +10,6 @@ import { RolEnum } from '../domain/enums/RolEnum';
 import { InitService } from './init.service';
 import { Miembro } from '../domain/models/organizacion/Miembro';
 import { environment } from 'src/environments/environment';
-import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +25,7 @@ export class AuthService {
   constructor(private http: HttpClient,
     private router: Router,
     private alertService: AlertService,
-    private initService: InitService,
-    private cookieService: CookieService) {
+    private initService: InitService) {
       this.systemEnumsProperty = initService.systemEnumsProperty;
       this.userClaims = initService.userClaims;
       this.miembro = initService.miembro;
@@ -50,9 +48,9 @@ export class AuthService {
   }
 
   async login(loginUsuario: LoginUsuario) {
-    localStorage.setItem("TOKEN_A_MANO", "1234");
     return this.http.post<UserClaims>(`${this.baseUrl}/usuarios/login`, loginUsuario).toPromise()
       .then(userClaims => {
+        localStorage.setItem("JSESSIONID", userClaims.sessionId);
         this.userClaims = userClaims;
         this.observableUserClaims.next(userClaims);
         if (this.esSoloUsuarioRegistrado()) {
