@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   async login(loginUsuario: LoginUsuario) {
-    this.cookieService.set("COKIE_A_MANO", "12345");
+    localStorage.setItem("TOKEN_A_MANO", "1234");
     return this.http.post<UserClaims>(`${this.baseUrl}/usuarios/login`, loginUsuario).toPromise()
       .then(userClaims => {
         this.userClaims = userClaims;
