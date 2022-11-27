@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://huella.azurewebsites.net/apiv2'
+  baseUrl: '/apiv1'
 };
 
 /*
