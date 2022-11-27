@@ -9,7 +9,7 @@ import { Localidad } from '../domain/models/ubicacion/Localidad';
 })
 export class LocalizacionService {
 
-  private baseUrl: string =  '/api/'
+  private baseUrl: string =  'https://ddstpa.com.ar/api/'
   private provincias: Provincia[] = [];
   private headers: HttpHeaders = new HttpHeaders({'Authorization' : 'Bearer PdazKo/cXANtj9VMG3dgxxNs7Mdosruc0TEZg0YW+vc='});
   private OFFSET_INICIAL: number = 1;
