@@ -36,20 +36,21 @@ export class AuthService {
   }
 
   public async loadUser() {
-    // this.userClaims = await this.http.get<UserClaims>(`${this.baseUrl}/usuarios/data`).toPromise();
-    // console.log("miembroId: ", this.userClaims.miembroId);
+    this.userClaims = await this.http.get<UserClaims>(`${this.baseUrl}/usuarios/data`).toPromise();
+    console.log("miembroId: ", this.userClaims.miembroId);
 
-    // if (this.userClaims.miembroId) {
-    //   this.initService.getMiembroData();
-    // }
-    // this.observableUserClaims.next();
-    // this.systemEnumsProperty = await this.http.get<SystemEnums>(`${this.baseUrl}/metadata-enums`).toPromise();
-    // console.log(this.systemEnumsProperty);
+    if (this.userClaims.miembroId) {
+      this.initService.getMiembroData();
+    }
+    this.observableUserClaims.next();
+    this.systemEnumsProperty = await this.http.get<SystemEnums>(`${this.baseUrl}/metadata-enums`).toPromise();
+    console.log(this.systemEnumsProperty);
   }
 
   async login(loginUsuario: LoginUsuario) {
     return this.http.post<UserClaims>(`${this.baseUrl}/usuarios/login`, loginUsuario).toPromise()
       .then(userClaims => {
+        localStorage.setItem("JSESSIONID", userClaims.sessionId);
         this.userClaims = userClaims;
         this.observableUserClaims.next(userClaims);
         if (this.esSoloUsuarioRegistrado()) {
@@ -103,14 +104,6 @@ export class AuthService {
     console.log("estoy aca, usuario: ", this.userClaims);
 
     return this.estaLogeado() && this.userClaims.usuarioId != null && this.userClaims.rol == null;
-  }
-
-  probarGet() {
-    return this.http.get('https://huella.azurewebsites.net/apiv2/factor-emision').toPromise()
-  }
-
-  probarPost() {
-    return this.http.post('/apiv2/usuarios/login', {usuario: 'bart', contrasenia: '1234'}).toPromise()
   }
 }
 

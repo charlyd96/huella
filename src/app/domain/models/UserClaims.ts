@@ -7,5 +7,6 @@ export interface UserClaims {
   miembroId?: number,
   organizacionId?: number,
   agenteSectorialId?: number,
-  usuario: Usuario
+  usuario: Usuario,
+  sessionId: string
 }
