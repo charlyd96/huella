@@ -1,6 +1,6 @@
 const proxyConfig = [
   {
-    context: ['/api/*'],
+    context: ['/api'],
     target: "https://ddstpa.com.ar",
     secure: false,
     changeOrigin: true,
