@@ -10,11 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class LocalizacionService {
 
-  private baseUrl: string =  environment.baseUrl;
+  private baseUrl: string =  environment.baseUrl + '/localizacion/';
   private provincias: Provincia[] = [];
   private headers: HttpHeaders = new HttpHeaders({'Authorization' : 'Bearer PdazKo/cXANtj9VMG3dgxxNs7Mdosruc0TEZg0YW+vc='});
-  private OFFSET_INICIAL: number = 1;
-  private MAX_RESPONSE: number = 50;
 
   constructor(private http: HttpClient) {
     this.internalGetProvincias()
