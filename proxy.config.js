@@ -1,12 +1,5 @@
 const proxyConfig = [
   {
-    context: ['/api'],
-    target: "https://ddstpa.com.ar",
-    secure: false,
-    changeOrigin: true,
-    logLevel : "debug"
-  },
-  {
     context: ['/apiv1'],
     target: "http://localhost:9000",
     secure: false,
