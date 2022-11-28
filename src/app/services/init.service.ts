@@ -10,7 +10,7 @@ import { UserClaims } from '../domain/models/UserClaims';
   providedIn: 'root'
 })
 export class InitService {
-  private baseUrl = environment.baseUrl; 
+  private baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +19,8 @@ export class InitService {
   public miembro: Miembro = <Miembro>{};
 
   public async init() {
+    console.log('Inicio de aplicación');
+
     return new Promise<Boolean>(async (resolve) => {
       this.userClaims = await this.http.get<UserClaims>(`${this.baseUrl}/usuarios/data`).toPromise();
       this.systemEnumsProperty = await this.http.get<SystemEnums>(`${this.baseUrl}/metadata-enums`).toPromise();
