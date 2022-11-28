@@ -14,6 +14,8 @@ import { AlertService } from '../../../services/alert.service';
 export class MiembrosComponent implements OnInit{
 
   miembrosAprobados: Miembro[] = [];
+  miembrosPendientes: Miembro[] = [];
+
   constructor(private organizacionService: OrganizacionService,
     private authService: AuthService,
     private alertService: AlertService) { }
@@ -21,8 +23,9 @@ export class MiembrosComponent implements OnInit{
   ngOnInit(): void{
 
    this.organizacionService.getMiembrosByOrganizacioId(this.authService.userClaims.organizacionId!)
-    .then((listadoMiembrosAprobados) => {
-      this.miembrosAprobados = listadoMiembrosAprobados;
+    .then((miembros) => {
+      this.miembrosAprobados = miembros.filter(m => m.aprobado);
+      this.miembrosPendientes = miembros.filter(m => !m.aprobado);
     })
     .catch ((err) => {
       this.alertService.displayErrorAlert(['Ocurrió un error al consultar los miembros', err.error.message]);

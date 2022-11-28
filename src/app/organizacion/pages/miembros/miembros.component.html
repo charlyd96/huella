@@ -125,7 +125,7 @@ cursor: pointer;
     </thead>
 
     <tbody class="table-group-divider">
-       <tr  *ngFor="let miembro of miembrosAprobados" >
+       <tr  *ngFor="let miembro of miembrosPendientes" >
         <td>{{miembro?.persona?.nombre}} </td>
         <td>{{miembro?.persona?.apellido}}</td>
         <td>{{miembro?.persona?.tipoDoc?.displayName}}</td>
