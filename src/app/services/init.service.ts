@@ -10,7 +10,7 @@ import { UserClaims } from '../domain/models/UserClaims';
   providedIn: 'root'
 })
 export class InitService {
-  private baseUrl = environment.baseUrl;
+  private baseUrl = environment.baseUrl; 
 
   constructor(private http: HttpClient) {}
 
